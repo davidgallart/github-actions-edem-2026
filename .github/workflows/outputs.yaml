@@ -6,7 +6,7 @@ jobs:
   say_hello:
     name: "Let's greet the user!"
     runs-on: ubuntu-latest
-    step:
+    steps:
       - id: get-time
         name: Grab the current time
         run: |
