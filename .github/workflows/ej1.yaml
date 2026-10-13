@@ -7,12 +7,4 @@ jobs:
     name: "Variable Global" 
     runs-on: ubuntu-latest
     steps:
-  - name: Debug
-    env:
-      MI_VAR: ${{ vars.VAR1 }}
-    run: |
-      if [ -z "$MI_VAR" ]; then
-        echo "La variable está vacía o no está disponible"
-      else
-        echo "La variable existe y tiene valor"
-      fi
+      - run: echo "Variable ${{ vars.VAR1 }}"
