@@ -1,6 +1,3 @@
-# Manejo de Secretos: Simula un login. Usa un "Secreto" de GitHub para ocultar una contraseña 
-# y mostrarla de forma segura (enmascarada) en el log.
-
 name: Ejercicio 2
 on:
   workflow_dispatch:
