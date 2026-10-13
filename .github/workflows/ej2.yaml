@@ -3,10 +3,10 @@ on:
 workflow_dispatch:
 
 jobs:
-say-hello:
-name: "login"
-runs-on: ubuntu-latest
-steps:
-- name: Comprobar contraseña
-if: ${{ secrets.PASSWORD_EJ2 == '1234' }}
-run: echo "Hello there!"
+  say-hello:
+    name: "login"
+    runs-on: ubuntu-latest
+    steps:
+    - name: Comprobar contraseña
+    if: ${{ secrets.PASSWORD_EJ2 == '1234' }}
+    run: echo "Hello there!"
