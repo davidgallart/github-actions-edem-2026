@@ -7,6 +7,5 @@ jobs:
     name: "login"
     runs-on: ubuntu-latest
     steps:
-    - name: Comprobar contraseña
     if: ${{ secrets.PASSWORD_EJ2 == '1234' }}
     run: echo "Hello there!"
