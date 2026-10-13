@@ -9,4 +9,4 @@ jobs:
     name: "Variable Global" 
     runs-on: ubuntu-latest
     steps:
-    - run: echo "Variable: ${{ var1 }}!"
+    - run: echo "Variable: ${{ vars.var1 }}!"
