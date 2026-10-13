@@ -6,5 +6,5 @@ jobs:
     name: "login"
     runs-on: ubuntu-latest
     steps:
-      - if: ${{ secrets_PASSWORD_EJ2 == '1234' }}
+      - if: ${{ secrets.PASSWORD_EJ2 == '1234' }}
       - run: echo "Hello there!"
