@@ -1,0 +1,21 @@
+name: Ejercicio 3
+
+on:
+  workflow_dispatch:
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up Python 1
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Set up Python 2
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: Set up Python 3
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
