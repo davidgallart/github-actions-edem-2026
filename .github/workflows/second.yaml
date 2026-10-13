@@ -8,5 +8,5 @@ jobs:
     steps:
       - run: echo "Hello there!"
       - uses: actions/checkout@v3
-      - name: display contents of list.txt
+      - name: "display contents of list.txt"
       - run: echo "I am step 4!" 
