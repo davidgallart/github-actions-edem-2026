@@ -27,7 +27,7 @@ jobs:
 
   procesamiento:
     name: Procesamiento
-    needs: job1
+    needs: seguridad
     runs-on: ubuntu-latest
     strategy:
       matrix:
