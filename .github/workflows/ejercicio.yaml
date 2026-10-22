@@ -12,7 +12,7 @@ on:
         default: "no"
 
 jobs:
-  job1:
+  seguridad:
     name: CI & Seguridad
     runs-on: ubuntu-latest
     steps:
@@ -25,7 +25,7 @@ jobs:
         if: ${{ inputs.scan == 'si' }}
         run: python3 scan.py
 
-  job2:
+  procesamiento:
     name: Procesamiento
     needs: job1
     runs-on: ubuntu-latest
@@ -42,9 +42,9 @@ jobs:
           name: reporte-${{ matrix.entorno }}
           path: reporte-${{ matrix.entorno }}.txt
 
-  job3:
+  notificacion:
     name: Notificación de Éxito
-    needs: [job1, job2]
+    needs: [seguridad, procesamiento]
     runs-on: ubuntu-latest
     steps:
       - name: Simular notificación
