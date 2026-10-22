@@ -1,0 +1,51 @@
+name: Ejercicio Git Actions
+
+on:
+  workflow_dispatch:
+    inputs:
+      scan:
+        description: "Tests de Seguridad"
+        type: choice
+        options:
+          - "si"
+          - "no"
+        default: "no"
+
+jobs:
+  job1:
+    name: CI & Seguridad
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validar ventas.json
+        run: jq empty ventas.json
+
+      - name: Escaneo de seguridad simulado
+        if: ${{ inputs.scan == 'si' }}
+        run: python3 scan.py
+
+  job2:
+    name: Procesamiento
+    needs: job1
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        entorno: [dev, production]
+    steps:
+      - name: Generar reporte
+        run: echo "Reporte de ventas procesado en ${{ matrix.entorno }}" > reporte-${{ matrix.entorno }}.txt
+
+      - name: Subir reporte
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-${{ matrix.entorno }}
+          path: reporte-${{ matrix.entorno }}.txt
+
+  job3:
+    name: Notificación de Éxito
+    needs: [job1, job2]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simular notificación
+        run: echo "Notificación enviada a ${{ secrets.DISCORD_WEBHOOK }}"
