@@ -19,6 +19,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Validar ventas.json
+      
+      # Es una herramienta para comprobar JSONs 
         run: jq empty ventas.json
 
       - name: Escaneo de seguridad simulado
@@ -31,10 +33,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        entorno: [dev, production]
+        entorno: [staging , production]
     steps:
       - name: Generar reporte
-        run: echo "Reporte de ventas procesado en ${{ matrix.entorno }}" > reporte-${{ matrix.entorno }}.txt
+        run: echo "Reporte procesado en ${{ matrix.entorno }}" > reporte-${{ matrix.entorno }}.txt
 
       - name: Subir reporte
         uses: actions/upload-artifact@v4
